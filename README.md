@@ -1,6 +1,11 @@
 # react-fp
 A functional JSX alternative for React
 
+[![build status][build-badge]][build-href]
+[![coverage status][coverage-badge]][coverage-href]
+[![dependencies status][deps-badge]][deps-href]
+[![npm version][npm-badge]][npm-href]
+
 ## Quick Example
 ```javascript
 const {div, h1} = require('react-fp');
@@ -44,3 +49,12 @@ const App = () => (
 
 ## License
 MIT
+
+[build-badge]: https://travis-ci.org/rtsao/react-fp.svg?branch=master
+[build-href]: https://travis-ci.org/rtsao/react-fp
+[coverage-badge]: https://coveralls.io/repos/rtsao/react-fp/badge.svg?branch=master&service=github
+[coverage-href]: https://coveralls.io/github/rtsao/react-fp?branch=master
+[deps-badge]: https://img.shields.io/badge/dependencies-none-brightgreen.svg
+[deps-href]: https://david-dm.org/rtsao/react-fp
+[npm-badge]: https://badge.fury.io/js/react-fp.svg
+[npm-href]: https://www.npmjs.com/package/react-fp
