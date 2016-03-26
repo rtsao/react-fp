@@ -9,13 +9,15 @@
   "bugs": "https://github.com/rtsao/react-fp/issues",
   "scripts": {
     "test": "node test/index.js",
-    "cover": "istanbul cover test/index.js"
+    "cover": "istanbul cover test/index.js",
+    "travis-test": "npm run cover && ((cat coverage/lcov.info | coveralls) || exit 0)"
   },
   "dependencies": {},
   "devDependencies": {
     "tape": "^4.5.1",
     "istanbul": "^0.4.2",
-    "react": ">=0.12"
+    "coveralls": "^2.11.9",
+    "react": ">=0.12",
   },
   "peerDependencies": {
     "react": ">=0.12"
