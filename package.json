@@ -17,7 +17,7 @@
     "tape": "^4.5.1",
     "istanbul": "^0.4.2",
     "coveralls": "^2.11.9",
-    "react": ">=0.12",
+    "react": ">=0.12"
   },
   "peerDependencies": {
     "react": ">=0.12"

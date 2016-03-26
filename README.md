@@ -5,9 +5,10 @@ A functional JSX alternative for React
 ```javascript
 const {div, h1} = require('react-fp');
 
-const MyComponent = ({title, description}) => (
+const MyComponent = ({title, children}) => (
   div({className: 'foo'}, [
-    h1(title)
+    h1(title),
+    ...children
   ])
 );
 
