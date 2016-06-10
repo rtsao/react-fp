@@ -6,40 +6,68 @@ A functional JSX alternative for React
 [![dependencies status][deps-badge]][deps-href]
 [![npm version][npm-badge]][npm-href]
 
+What `React.createElement` should have been.
+
 ## Quick Example
 ```javascript
-const {div, h1} = require('react-fp');
+import {div, h1} from 'react-fp'
 
-const MyComponent = ({title, children}) => (
-  div({className: 'foo'}, [
+const Panel = ({title, children}) => (
+  div({className: 'panel'}, [
     h1(title),
-    ...children
+    children
   ])
-);
+)
+```
 
+## Install
+```
+npm install react-fp --save
 ```
 
 ## Usage
+
+#### Elements
 ```javascript
-tag();                            // No props or children
-tag(child1, child2, ...);         // No props, list of children
-tag(childArray);                  // No props, array of children
-tag(props);                       // Props only
-tag(props, child1, child2, ...);  // Props, list of children
-tag(props, childArray);           // Props, array of children
+// `tag` can be any supported HTML or SVG tag
+import {tag} from 'react-fp'
+
+tag()                                 // No props or children
+tag(child1, child2, ...rest)          // No props, list of children
+tag([child1, child2, ...rest])        // No props, array of children
+tag(props)                            // Props only
+tag(props, child1, child2, ...rest)   // Props, list of children
+tag(props, [child1, child2, ...rest]) // Props, array of children
 ```
 
 #### Components
-```javascript
-const {component, div} = require('react-fp');
-const MyComponent = component(require('./my-component'));
+Pass a `ReactClass` or `ReactFunctionalComponent` into the provided `fp` function to create a `React.createElement` helper for the given component with interface above.
+
+##### Example
+
+```js
+// button.js
+import {fp} from 'react-fp'
+
+const Button = (props) => {
+  /* ... */
+}
+
+export default fp(Button)      // Export the React.createElement helper as default
+export {Button as ButtonClass} // Export the underlying ReactClass in case it is needed (optional)
+```
+
+```js
+// app.js
+import {div, h1} from 'react-fp'
+import MyButton from './button.js'
 
 const App = () => (
   div([
-    MyComponent('foo')
-  ]);
-);
-
+    h1('hello world'),
+    MyButton('click me')
+  ])
+)
 ```
 
 ## See Also

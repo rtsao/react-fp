@@ -6,7 +6,7 @@ Object.keys(React.DOM).forEach(function(tag) {
     module.exports[tag] = helper(tag);
 });
 
-module.exports.component = helper;
+module.exports.fp = helper;
 
 function helper(type) {
     return function createElement(arg1, arg2) {
