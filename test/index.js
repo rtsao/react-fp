@@ -5,7 +5,7 @@ var React = require('react');
 
 var fp = require('../');
 var TestComponent = require('./fixtures/component');
-var testComponent = fp.fp(TestComponent);
+var testComponent = fp.createFactory(TestComponent);
 
 test('no props or children (div)', function(t) {
   t.deepEqual(

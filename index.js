@@ -2,13 +2,13 @@
 
 var React = require('react');
 
-Object.keys(React.DOM).forEach(function(tag) {
-    module.exports[tag] = helper(tag);
+Object.keys(React.DOM).forEach(function exportElementFactory(tag) {
+    module.exports[tag] = createFactory(tag);
 });
 
-module.exports.fp = helper;
+module.exports.createFactory = createFactory;
 
-function helper(type) {
+function createFactory(type) {
     return function createElement(arg1, arg2) {
         var len = arguments.length;
         if (len === 0) {

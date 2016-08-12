@@ -10,11 +10,11 @@ What `React.createElement` should have been.
 
 ## Quick Example
 ```javascript
-import {div, h1} from 'react-fp'
+import {div, h2} from 'react-fp'
 
 const Panel = ({title, children}) => (
   div({className: 'panel'}, [
-    h1(title),
+    h2(title),
     children
   ])
 )
@@ -41,31 +41,36 @@ tag(props, [child1, child2, ...rest]) // Props, array of children
 ```
 
 #### Components
-Pass a `ReactClass` or `ReactFunctionalComponent` into the provided `fp` function to create a `React.createElement` helper for the given component with interface above.
+Pass a `ReactClass` or `ReactFunctionalComponent` into the provided `createFactory` function to create a `React.createElement` helper function for the given component with interface above.
 
 ##### Example
 
 ```js
-// button.js
-import {fp} from 'react-fp'
+// panel.js
+import {createFactory, div, h2} from 'react-fp'
 
-const Button = (props) => {
-  /* ... */
-}
+const Panel = ({title, children}) => (
+  div({className: 'panel'}, [
+    h2(title),
+    children
+  ])
+)
 
-export default fp(Button)      // Export the React.createElement helper as default
-export {Button as ButtonClass} // Export the underlying ReactClass in case it is needed (optional)
+export default createFactory(Panel) // Export the React.createElement helper as default
+export {Panel as PanelClass}        // Export the underlying ReactClass in case it is needed (optional)
 ```
 
 ```js
 // app.js
 import {div, h1} from 'react-fp'
-import MyButton from './button.js'
+import Panel from './panel.js'
 
 const App = () => (
   div([
     h1('hello world'),
-    MyButton('click me')
+    Panel({title: 'cool stuff'}, [
+      div('panel contents')
+    ])
   ])
 )
 ```
