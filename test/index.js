@@ -4,8 +4,8 @@ var test = require('tape');
 var React = require('react');
 
 var fp = require('../');
-var TestComponent = require('./fixtures/component');
-var testComponent = fp.createFactory(TestComponent);
+var ComponentClass = require('./fixtures/component');
+var componentFactory = fp.createFactory(ComponentClass);
 
 test('no props or children (div)', function(t) {
   t.deepEqual(
@@ -18,8 +18,8 @@ test('no props or children (div)', function(t) {
 
 test('no props or children (component)', function(t) {
   t.deepEqual(
-    testComponent(),
-    React.createElement(TestComponent),
+    componentFactory(),
+    React.createElement(ComponentClass),
     'matches expected'
   );
   t.end();
@@ -36,8 +36,8 @@ test('no props and single child (div)', function(t) {
 
 test('no props and single child (component)', function(t) {
   t.deepEqual(
-    testComponent('foo'),
-    React.createElement(TestComponent, null, 'foo'),
+    componentFactory('foo'),
+    React.createElement(ComponentClass, null, 'foo'),
     'matches expected'
   );
   t.end();
@@ -59,13 +59,13 @@ test('no props and multiple children (div)', function(t) {
 
 test('no props and multiple children (component)', function(t) {
   t.deepEqual(
-    testComponent('foo', 'bar'),
-    React.createElement(TestComponent, null, 'foo', 'bar'),
+    componentFactory('foo', 'bar'),
+    React.createElement(ComponentClass, null, 'foo', 'bar'),
     'matches expected'
   );
   t.deepEqual(
-    testComponent('foo', 'bar', 'baz'),
-    React.createElement(TestComponent, null, 'foo', 'bar', 'baz'),
+    componentFactory('foo', 'bar', 'baz'),
+    React.createElement(ComponentClass, null, 'foo', 'bar', 'baz'),
     'matches expected'
   );
   t.end();
@@ -87,13 +87,13 @@ test('no props and child array (div)', function(t) {
 
 test('no props and child array (component)', function(t) {
   t.deepEqual(
-    testComponent(['foo']),
-    React.createElement(TestComponent, null, 'foo'),
+    componentFactory(['foo']),
+    React.createElement(ComponentClass, null, 'foo'),
     'matches expected with array containing single child'
   );
   t.deepEqual(
-    testComponent(['foo', 'bar']),
-    React.createElement(TestComponent, null, 'foo', 'bar'),
+    componentFactory(['foo', 'bar']),
+    React.createElement(ComponentClass, null, 'foo', 'bar'),
     'matches expected with array containing multiple children'
   );
   t.end();
@@ -110,8 +110,8 @@ test('props and no children (div)', function(t) {
 
 test('props and no children (component)', function(t) {
   t.deepEqual(
-    testComponent({foo: 'foo'}),
-    React.createElement(TestComponent, {foo: 'foo'}),
+    componentFactory({foo: 'foo'}),
+    React.createElement(ComponentClass, {foo: 'foo'}),
     'matches expected'
   );
   t.end();
@@ -128,8 +128,8 @@ test('props and single child (div)', function(t) {
 
 test('props and single child (component)', function(t) {
   t.deepEqual(
-    testComponent({foo: 'foo'}, 'foo'),
-    React.createElement(TestComponent, {foo: 'foo'}, 'foo'),
+    componentFactory({foo: 'foo'}, 'foo'),
+    React.createElement(ComponentClass, {foo: 'foo'}, 'foo'),
     'matches expected'
   );
   t.end();
@@ -151,13 +151,13 @@ test('props and multiple children (div)', function(t) {
 
 test('props and multiple children (component)', function(t) {
   t.deepEqual(
-    testComponent({foo: 'foo'}, 'foo', 'bar'),
-    React.createElement(TestComponent, {foo: 'foo'}, 'foo', 'bar'),
+    componentFactory({foo: 'foo'}, 'foo', 'bar'),
+    React.createElement(ComponentClass, {foo: 'foo'}, 'foo', 'bar'),
     'matches expected'
   );
   t.deepEqual(
-    testComponent({foo: 'foo'}, 'foo', 'bar', 'baz'),
-    React.createElement(TestComponent, {foo: 'foo'}, 'foo', 'bar', 'baz'),
+    componentFactory({foo: 'foo'}, 'foo', 'bar', 'baz'),
+    React.createElement(ComponentClass, {foo: 'foo'}, 'foo', 'bar', 'baz'),
     'matches expected'
   );
   t.end();
@@ -179,13 +179,13 @@ test('props and child array (div)', function(t) {
 
 test('props and child array (component)', function(t) {
   t.deepEqual(
-    testComponent({foo: 'foo'}, ['foo']),
-    React.createElement(TestComponent, {foo: 'foo'}, 'foo'),
+    componentFactory({foo: 'foo'}, ['foo']),
+    React.createElement(ComponentClass, {foo: 'foo'}, 'foo'),
     'matches expected with array containing single child'
   );
   t.deepEqual(
-    testComponent({foo: 'foo'}, ['foo', 'bar']),
-    React.createElement(TestComponent, {foo: 'foo'}, 'foo', 'bar'),
+    componentFactory({foo: 'foo'}, ['foo', 'bar']),
+    React.createElement(ComponentClass, {foo: 'foo'}, 'foo', 'bar'),
     'matches expected with array containing multiple children'
   );
   t.end();
